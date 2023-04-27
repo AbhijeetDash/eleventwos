@@ -18,8 +18,5 @@ class Board extends Equatable {
 
   // Adds Equality check for this instance of the class
   @override
-  List<Object?> get props => [
-    size,
-    score,
-  ];
+  List<Object?> get props => [size, score];
 }

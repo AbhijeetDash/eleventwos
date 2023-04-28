@@ -159,6 +159,44 @@ class _PageGameState extends State<PageGame> {
                     );
                   }
 
+                  if (state is GameStateWon) {
+                    return SizedBox(
+                      width: size.width,
+                      height: size.width,
+                      child: Stack(
+                        children: [
+                          BoardWidget(
+                            blocks: state.board.blocks,
+                          ),
+                          Container(
+                            color: Colors.black.withOpacity(0.5),
+                            child: Center(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Text(
+                                    "You Won 🥳",
+                                    style: TextStyle(
+                                      fontSize: 30.0,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 10.0),
+                                  FloatingActionButton(
+                                    onPressed: () {},
+                                    child: const Icon(
+                                      Icons.refresh,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  }
+
                   return const Center(
                     child: CircularProgressIndicator(),
                   );

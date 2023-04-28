@@ -32,6 +32,7 @@ class BlocGameEngine extends Bloc<EventGameEngine, GameState> {
   }
 
   void _onEventMove(EventMove event, Emitter<GameState> emit) {
+    emit(GameStateLoading());
     List<List<int>> dataMatrix = boardService.getDataMatrix(board);
     List<List<int>> updatedState = [];
 
@@ -57,7 +58,13 @@ class BlocGameEngine extends Bloc<EventGameEngine, GameState> {
       emit(GameStateOver(board: board));
       return;
     }
+
     int score = boardService.getScore(updatedState);
+    if (boardService.isGameWon(updatedState)) {
+      emit(GameStateWon(board: board, score: score));
+      return;
+    }
+
     _addTiles(1);
     emit(GameStatePlaying(board: board, score: score));
   }

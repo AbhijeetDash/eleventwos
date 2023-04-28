@@ -34,3 +34,13 @@ class GameStateNewGame extends GameState {
     required this.score,
   });
 }
+
+class GameStateWon extends GameState {
+  final Board board;
+  final int score;
+
+  GameStateWon({
+    required this.board,
+    required this.score,
+  });
+}

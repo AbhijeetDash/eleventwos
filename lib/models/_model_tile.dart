@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
 
-class Block extends Equatable {
+class Tile extends Equatable {
   int xPosition, yPosition, value;
   bool canMerge, isNew;
 
-  Block({
+  Tile({
     required this.xPosition,
     required this.yPosition,
     required this.value,
